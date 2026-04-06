@@ -44,6 +44,7 @@ export default function Header() {
             <Link href="/practice/start" className="hover:text-primary transition-colors">練習</Link>
             <Link href="/history" className="hover:text-primary transition-colors">学習履歴</Link>
             <Link href="/review" className="hover:text-primary transition-colors">復習</Link>
+            <Link href="/tips" className="hover:text-primary transition-colors">攻略のコツ</Link>
             <Link href="/admin/questions" className="hover:text-primary transition-colors">問題管理</Link>
           </nav>
         </div>
@@ -89,6 +90,7 @@ export default function Header() {
           <Link href="/practice/start" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>練習</Link>
           <Link href="/history" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>学習履歴</Link>
           <Link href="/review" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>復習</Link>
+          <Link href="/tips" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>攻略のコツ</Link>
           <Link href="/admin/questions" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>問題管理</Link>
           <hr className="border-border-color" />
           <div className="py-2 text-xs text-text-secondary">{user.email}</div>
