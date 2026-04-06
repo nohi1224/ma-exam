@@ -9,7 +9,8 @@ export default function Header() {
   const router = useRouter()
   const supabase = createClient()
   const [user, setUser] = useState<{ email?: string } | null>(null)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
@@ -43,6 +44,7 @@ export default function Header() {
             <Link href="/practice/start" className="hover:text-primary transition-colors">練習</Link>
             <Link href="/history" className="hover:text-primary transition-colors">学習履歴</Link>
             <Link href="/review" className="hover:text-primary transition-colors">復習</Link>
+            <Link href="/admin/questions" className="hover:text-primary transition-colors">問題管理</Link>
           </nav>
         </div>
         <div className="flex items-center gap-3">
@@ -53,28 +55,26 @@ export default function Header() {
           >
             {darkMode ? '☀️' : '🌙'}
           </button>
-          <div className="relative">
+          {/* Desktop user menu */}
+          <div className="relative hidden md:block">
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => setUserMenuOpen(!userMenuOpen)}
               className="text-sm px-3 py-1.5 rounded-lg hover:bg-bg-secondary transition-colors"
             >
               {user.email}
             </button>
-            {menuOpen && (
+            {userMenuOpen && (
               <div className="absolute right-0 mt-1 w-48 bg-card-bg border border-border-color rounded-lg shadow-lg py-1 z-50">
-                <Link href="/admin/questions" className="block px-4 py-2 text-sm hover:bg-bg-secondary" onClick={() => setMenuOpen(false)}>
-                  問題管理
-                </Link>
                 <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm hover:bg-bg-secondary text-danger">
                   ログアウト
                 </button>
               </div>
             )}
           </div>
-          {/* Mobile menu */}
+          {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-bg-secondary"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="メニュー"
           >
             ☰
@@ -82,13 +82,19 @@ export default function Header() {
         </div>
       </div>
       {/* Mobile nav */}
-      {menuOpen && (
+      {mobileMenuOpen && (
         <nav className="md:hidden border-t border-border-color px-4 py-2 space-y-1 bg-card-bg">
-          <Link href="/dashboard" className="block py-2 text-sm" onClick={() => setMenuOpen(false)}>ダッシュボード</Link>
-          <Link href="/exam/start" className="block py-2 text-sm" onClick={() => setMenuOpen(false)}>模擬試験</Link>
-          <Link href="/practice/start" className="block py-2 text-sm" onClick={() => setMenuOpen(false)}>練習</Link>
-          <Link href="/history" className="block py-2 text-sm" onClick={() => setMenuOpen(false)}>学習履歴</Link>
-          <Link href="/review" className="block py-2 text-sm" onClick={() => setMenuOpen(false)}>復習</Link>
+          <Link href="/dashboard" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>ダッシュボード</Link>
+          <Link href="/exam/start" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>模擬試験</Link>
+          <Link href="/practice/start" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>練習</Link>
+          <Link href="/history" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>学習履歴</Link>
+          <Link href="/review" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>復習</Link>
+          <Link href="/admin/questions" className="block py-2 text-sm" onClick={() => setMobileMenuOpen(false)}>問題管理</Link>
+          <hr className="border-border-color" />
+          <div className="py-2 text-xs text-text-secondary">{user.email}</div>
+          <button onClick={handleLogout} className="block w-full text-left py-2 text-sm text-danger">
+            ログアウト
+          </button>
         </nav>
       )}
     </header>
