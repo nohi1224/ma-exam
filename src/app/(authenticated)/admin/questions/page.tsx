@@ -88,6 +88,9 @@ export default function AdminQuestionsPage() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">問題管理</h1>
         <div className="flex gap-3">
+          <Link href="/admin/feedback" className="px-4 py-2 rounded-lg border border-warning/30 text-warning hover:bg-warning/10 transition-colors text-sm">
+            フィードバック
+          </Link>
           <Link href="/admin/import" className="px-4 py-2 rounded-lg border border-border-color hover:bg-bg-secondary transition-colors text-sm">
             一括インポート
           </Link>

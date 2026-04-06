@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
 import { TestResult, TestSession, Answer, Question, SUBJECT_LABELS, Subject, AnswerChoice } from '@/lib/database.types'
 import { PASS_THRESHOLD, SUBJECT_MIN_THRESHOLD, MAX_CONTRAINDICATED } from '@/lib/scoring'
+import FeedbackButton from '@/components/FeedbackButton'
 
 interface AnswerWithQuestion extends Answer {
   question: Question
@@ -126,6 +127,9 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ sessio
               {a.question.explanation && (
                 <div className="mt-2 p-2 rounded bg-bg-secondary text-sm">解説: {a.question.explanation}</div>
               )}
+              <div className="mt-2">
+                <FeedbackButton questionId={a.question.id} />
+              </div>
             </div>
           )
         })}

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
 import { Answer, Question, AnswerChoice, SUBJECT_LABELS, Subject } from '@/lib/database.types'
 import { calculateResults } from '@/lib/scoring'
+import FeedbackButton from '@/components/FeedbackButton'
 
 interface AnswerWithQuestion extends Answer {
   question: Question
@@ -160,12 +161,15 @@ export default function PracticeSessionPage({ params }: { params: Promise<{ sess
                 <span className="font-medium">解説: </span>{current.question.explanation}
               </div>
             )}
-            <button
-              onClick={nextQuestion}
-              className="w-full py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary-hover transition-colors"
-            >
-              {currentIndex < answers.length - 1 ? '次の問題へ' : '結果を見る'}
-            </button>
+            <div className="flex items-center justify-between">
+              <FeedbackButton questionId={current.question.id} />
+              <button
+                onClick={nextQuestion}
+                className="px-8 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary-hover transition-colors"
+              >
+                {currentIndex < answers.length - 1 ? '次の問題へ' : '結果を見る'}
+              </button>
+            </div>
           </div>
         )}
       </div>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
 import { TestResult, Answer, Question, SUBJECT_LABELS, Subject, AnswerChoice } from '@/lib/database.types'
 import { PASS_THRESHOLD, SUBJECT_MIN_THRESHOLD, MAX_CONTRAINDICATED } from '@/lib/scoring'
+import FeedbackButton from '@/components/FeedbackButton'
 
 interface AnswerWithQuestion extends Answer {
   question: Question
@@ -188,6 +189,9 @@ export default function ExamResultPage({ params }: { params: Promise<{ sessionId
                     <span className="font-medium">解説: </span>{a.question.explanation}
                   </div>
                 )}
+                <div className="mt-3">
+                  <FeedbackButton questionId={a.question.id} />
+                </div>
               </div>
             )
           })}
