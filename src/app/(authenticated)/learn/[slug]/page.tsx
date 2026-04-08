@@ -28,10 +28,18 @@ export default function LearnCategoryPage({ params }: { params: Promise<{ slug: 
         <Link href="/learn" className="text-sm text-primary hover:underline">← M&A知識ライブラリ</Link>
       </div>
 
-      <div>
-        <div className="text-3xl mb-2">{category.icon}</div>
-        <h1 className="text-2xl font-bold">{category.title}</h1>
-        <p className="text-text-secondary mt-2">{category.description}</p>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <div className="text-3xl mb-2">{category.icon}</div>
+          <h1 className="text-2xl font-bold">{category.title}</h1>
+          <p className="text-text-secondary mt-2">{category.description}</p>
+        </div>
+        <Link
+          href={`/learn/quiz?category=${slug}`}
+          className="shrink-0 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary-hover transition-colors"
+        >
+          このカテゴリをテスト
+        </Link>
       </div>
 
       {category.sections.map((section, si) => (

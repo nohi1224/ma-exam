@@ -67,6 +67,20 @@ export default function LearnPage() {
         <p className="text-text-secondary mt-2">IT・Web・ベンチャー領域のM&Aに関する実務数値・指標をカテゴリ別にまとめています。</p>
       </div>
 
+      {/* Quiz CTA */}
+      <Link
+        href="/learn/quiz"
+        className="block p-6 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
+      >
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="text-lg font-semibold">知識テストに挑戦する</div>
+            <div className="text-sm opacity-80 mt-1">カテゴリを選んで、数値・指標の知識をテスト。全カテゴリ横断も可能。</div>
+          </div>
+          <div className="text-3xl">📝</div>
+        </div>
+      </Link>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {CATEGORIES.map((cat) => (
           <Link
