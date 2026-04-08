@@ -87,6 +87,28 @@ export default function DashboardPage() {
         </Link>
       </div>
 
+      {/* M&A Knowledge */}
+      <div>
+        <h2 className="text-lg font-semibold mb-4">M&A知識を学ぶ</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Link href="/learn" className="p-5 rounded-xl bg-card-bg border border-border-color hover:border-primary transition-colors">
+            <div className="text-2xl mb-2">📚</div>
+            <div className="font-semibold">知識ライブラリ</div>
+            <div className="text-sm text-text-secondary mt-1">IT・Web領域のM&A実務数値をカテゴリ別に学習</div>
+          </Link>
+          <Link href="/learn/quiz" className="p-5 rounded-xl bg-card-bg border border-border-color hover:border-primary transition-colors">
+            <div className="text-2xl mb-2">🧠</div>
+            <div className="font-semibold">知識テスト</div>
+            <div className="text-sm text-text-secondary mt-1">数値・指標の知識を4択テストで確認</div>
+          </Link>
+          <Link href="/tips" className="p-5 rounded-xl bg-card-bg border border-border-color hover:border-primary transition-colors">
+            <div className="text-2xl mb-2">💡</div>
+            <div className="font-semibold">試験攻略のコツ</div>
+            <div className="text-sm text-text-secondary mt-1">配点戦略・禁忌肢対策・頻出テーマ</div>
+          </Link>
+        </div>
+      </div>
+
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="p-6 rounded-xl bg-card-bg border border-border-color">
